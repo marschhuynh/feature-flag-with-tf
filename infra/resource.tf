@@ -80,3 +80,14 @@ resource "launchdarkly_feature_flag" "show_yellow_block" {
     description = "Hidden"
   }
 }
+
+resource "launchdarkly_feature_flag_environment" "green-on-testing" {
+  flag_id = launchdarkly_feature_flag.show_green_block.id
+  env_key = "testing"
+
+  on = true
+  fallthrough {
+    variation = 0
+  }
+  off_variation = 1
+}
