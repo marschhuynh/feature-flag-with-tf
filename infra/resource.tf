@@ -61,3 +61,22 @@ resource "launchdarkly_feature_flag" "show_red_block" {
     description = "Hidden"
   }
 }
+
+resource "launchdarkly_feature_flag" "show_yellow_block" {
+  project_key = launchdarkly_project.default_project.key
+  key         = "show-yellow-block"
+  name        = "Show yellow block"
+  description = "Just show a yellow block"
+
+  variation_type = "boolean"
+  variations {
+    value       = "true"
+    name        = "On"
+    description = "Show"
+  }
+  variations {
+    value       = "false"
+    name        = "Off"
+    description = "Hidden"
+  }
+}
